@@ -1,0 +1,740 @@
+* {
+    font-family: century gothic;
+
+    /* Avoid to select the text on the browser */
+
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+
+}
+
+video {
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: -1;
+}
+
+
+.component {
+    padding: 30px 5px;
+    margin-top: 70px;
+    min-height: 250px;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 50px;
+    color: #222222;
+    text-align: center;
+}
+
+/* DAshboard */
+.dashboardHome h1 {
+    font-family: Arial;
+    text-transform: capitalize;
+}
+
+.removescrol {
+    overflow: hidden;
+}
+
+/* Login */
+
+.loginBg {
+    background-image: url('../imgz/Values.JPG');
+    background-size: 100%;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+
+
+}
+
+
+
+/* End dashboard */
+
+.component .cards div div {
+    min-height: 100px;
+    border: 1px solid #e9e9e9;
+}
+
+
+/* Fonts */
+.btn {
+    padding: 5px;
+    font-size: 10px;
+    font-weight: bolder;
+    border-bottom: 1px solid #9e62e2;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* The below is for the form saving */
+.loader {
+    height: 200px;
+    background-image: url(../imgz/loading.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+
+}
+
+/* The below is the progress preview on the data list load */
+.dataLoader {
+    background-image: url('../imgz/DataListLoading.gif');
+    background-size: 10%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    height: 150px;
+    background-position-x: center;
+
+}
+
+/* Loading the units on the dropdwon */
+.unitsLoading {
+    background-image: url('../imgz/loading.gif');
+    background-size: 14%;
+    margin-left: 40px;
+}
+
+.printHeaderBoxParent {
+    display: none;
+}
+
+/* Printings Styles */
+@media print {
+
+    *,
+    body,
+    .dataTable,
+    .dataTable .dataTable tr td {
+        font-size: 12px;
+    }
+
+    .dataTable {
+
+        margin-left: "60px";
+    }
+
+    .DataTableBox,
+    .dataTable {
+        padding-left: 20px;
+        padding-right: 50px;
+        margin-top: 0px;
+    }
+
+    .printHeaderBoxParent,
+    .printHeaderBoxParent * {
+        display: block;
+
+    }
+
+    .dataTable .delButton {
+        display: none;
+    }
+
+}
+
+.printHeaderBox {
+    /* margin: "10px";
+    padding: 5px; */
+}
+
+.LogoOnPrint {
+    background-image: url('../imgz/Logo.jpeg');
+    background-repeat: no-repeat;
+    content: " ";
+}
+
+/* End printings */
+
+
+
+/* Tables */
+.table thead {
+    background-color: #08446f;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.table thead td {
+    padding-left: 30px;
+    font-size: 11px;
+}
+
+.table td {
+    padding: 0px;
+    font-size: 12px;
+    font-weight: bolder;
+    border-bottom: 1px solid #9e62e2;
+}
+
+
+.delIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(../imgz/delete.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+.delIcon:hover {
+    cursor: pointer;
+}
+
+
+
+.formBox,
+.formPane {
+    box-shadow: 0px 0px 2px #000;
+    border-radius: 2px;
+    border: 1px solid #b5e1f6;
+}
+
+.DataTableBox,
+.dataTable {
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+.dataTable .table {
+    margin: 0px;
+    width: 100%;
+}
+
+
+.CountTotals,
+.totalBox {
+    box-shadow: 0px 0px 2px #000;
+    border-radius: 2px;
+    border: 1px solid #b5e1f6;
+}
+
+.optCol {
+    max-width: 50px;
+}
+
+.boldTitle {
+    font-weight: bolder;
+    font-size: 14px;
+    margin: 13px auto;
+
+    color: #000;
+}
+
+.totalBox,
+.CountTotals {
+    background-image: url('../imgz/cargo.jpg');
+    background-size: 100%;
+}
+
+.dataTableBox h3,
+#Form h3,
+.listTitle h3,
+.formPane h3 {
+    font-weight: bolder;
+}
+
+
+.CountTotals,
+.totalBox {
+    font-weight: bolder;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.totalBoxList h6 {
+    font-weight: bolder;
+}
+
+.totalBoxList {
+    font-size: 12px;
+    line-height: 4px;
+}
+
+.totalBox li {
+    font-weight: bolder;
+}
+
+.totalBoxList p {
+    font-size: 12px;
+    ;
+}
+
+.bottomspace {
+    margin-bottom: 30px;
+}
+
+.g {
+    color: #4a765be8;
+
+}
+
+.deptext {
+    -webkit-text-stroke-width: 2px;
+    /* -webkit-text-fill-color: #d86812; */
+    -webkit-text-stroke-color: rgb(24, 154, 235);
+    text-shadow: 0px 0px 5px #01080b;
+    font-size: 30px;
+
+}
+
+/* Form */
+
+
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+
+.homepageBg {
+    background-image: url('../imgz/homeWarehouse.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.loginBg .formPane {
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    /* color: #0694e6; */
+}
+
+.logoutBtn {}
+
+
+.navbar-nav>li {
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+.gBanner {
+    height: calc(100vh - 60px);
+    background-image: url('../imgz/9.jpg');
+    background-size: 90%;
+    background-position-y: -190px;
+    position: relative;
+}
+
+.gBanner .overlay {
+    height: 35vh;
+    background-color: #000;
+    opacity: 0.1;
+    content: " ";
+    width: 100%;
+    top: 35%;
+    position: absolute;
+    left: 0px;
+
+}
+
+.gBanner .bannerTitle,
+.gBanner .bannerMore {
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    left: auto;
+    text-shadow: 0px 0px 7px #000;
+}
+
+.gBanner .bannerTitle {
+    /* font-size: 50px; */
+    font-weight: bolder;
+    text-transform: capitalize;
+    top: 38%;
+
+    width: 100%;
+
+}
+
+.gBanner .bannerMore {
+    top: 55%;
+    width: 20%;
+    left: 42.25%;
+    border: 1px solid #fff;
+    font-weight: bold;
+}
+
+.gBanner .bannerMore:hover {
+    border: 1px solid #fff;
+    color: #00aeff;
+    /* border: 2px solid #fff; */
+    border: solid 2px #ffffff;
+    transition: border-width .3s linear;
+
+
+}
+
+.gBanner .slide1 {}
+
+
+
+/* Solution component */
+
+.compSolutions {}
+
+.IconTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #415f66;
+    padding: 10px 20px;
+}
+
+.compSolutions .IconTitle span {
+    text-align: center;
+    display: block;
+}
+
+.compSolutions .IconTitle p {
+    text-align: center;
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+
+
+/*Footer*/
+.footer a {
+    font-weight: bolder;
+    color: #2ccdf5;
+}
+
+.footerLogo {
+    height: 150px;
+    width: 150px;
+    background-image: url('../imgz/Logo.jpg');
+    border-radius: 100%;
+    border: 1px solid #2ccdf5;
+    box-shadow: 0px 0px 5px #000;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-size: 90%;
+
+}
+
+.footerAddress {
+    font-size: 12px;
+    text-align: left;
+}
+
+.pageWrapper {
+    /* background-image: url('../imgz/bgdev.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: fixed;
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+
+
+
+}
+
+
+
+
+/* This is the styled scrollbar for any component */
+.styledVHScrollBar {
+    position: relative;
+}
+
+.styledVHScrollBar::-webkit-scrollbar {
+    width: 7px;
+    border-top: 5px;
+    border-bottom: 5px;
+}
+
+.styledVHScrollBar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.styledVHScrollBar::-webkit-scrollbar-thumb {
+    background: #888;
+    background-color: #045ee6;
+    border-top: 5px;
+    border-bottom: 5px;
+}
+
+.styledVHScrollBar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    background-color: #045ee6;
+}
+
+
+
+
+.pageWrapper::-webkit-scrollbar {
+    width: 7px;
+    border-top: 5px;
+    border-bottom: 5px;
+}
+
+.pageWrapper ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.pageWrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    background-color: #045ee6;
+    border-top: 5px;
+    border-bottom: 5px;
+}
+
+.pageWrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    background-color: #045ee6;
+}
+
+/* Vertical Menu Bar */
+
+
+.verNavBar {
+    background-color: #05a6fd;
+    border-radius: 6px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px #000;
+    /* height: 80%; */
+}
+
+.verNavBar a {
+    font-size: 13px;
+    ;
+}
+
+.navContainer a,
+.navContainer i {
+    color: #f6f7f8;
+}
+
+.verNavBar a,
+.verNavBar i {
+    font-size: 14px;
+    color: #f6f7f8;
+    font-weight: bolder;
+
+}
+
+.verNavBar a:hover {
+    color: #000;
+}
+
+.verNavBar a:visited {
+    color: #000;
+
+}
+
+.form-control {
+    border: 1px solid #ff0000;
+    background-color: #02020f;
+}
+
+
+/* =================== Deploy ======================== */
+.deployParentFixed {
+    position: sticky
+}
+
+.deployBox {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.structureItem:hover {
+    cursor: pointer
+}
+
+.structureItem {
+    font-size: 14px;
+    padding: 9px;
+    background-color: #470343;
+    /* z-index: 1; */
+}
+
+.structureItem:hover {
+    background-color: #7e1678;
+}
+
+.unitItem {
+    font-size: 13px;
+    padding: 3px;
+    background-color: #418affda;
+}
+
+.unitItem:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 3px #110a03;
+    background-color: #3473dada;
+}
+
+
+.structureItem,
+.unitItem {
+    color: #fff;
+    float: left;
+    display: inline;
+    box-shadow: 0px 0px 3px #ff8800;
+    border: 2px solid #fff;
+
+}
+
+.unitItem .header {
+    font-size: 14px;
+    padding: 5px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 7px;
+}
+
+.unitItem .fields {
+    margin-top: 10px;
+    border-top: 1px solid #fff;
+    padding-top: 5px;
+}
+
+.coloredTitles {
+    color: #ff8800;
+}
+
+.selectedBigtext {
+    font-size: 18px;
+}
+
+.selectedSubtext {
+    font-size: 16px;
+}
+
+
+.parenthasTop_right {
+    position: relative;
+    z-index: 1;
+
+}
+
+.childTop_right {
+    position: absolute;
+    width: auto;
+    border-radius: 6px;
+    background-color: #194388da;
+    border: 1px solid #fff;
+    top: -10px;
+    right: -10px;
+    font-size: 11px;
+    padding: 3px;
+    box-shadow: 0px 0px 5px #fff;
+}
+
+
+/* Downloads */
+
+.appNames ul li {
+    line-height: 2em;
+}
+
+
+/* Deployment */
+.applicationmade_success {
+    height: 100px;
+    background-image: url('../imgz/fireworks.gif');
+    background-color: #11032a;
+}
+
+
+
+.number {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    background-color: #03655b;
+    /* background-color: #fff; */
+    color: #fff;
+    font-size: 30px;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 5px #000;
+    /* float: left; */
+}
+
+.commandsRun ul {
+    margin-top: 2em;
+
+}
+
+.deploy_title {
+    font-family: Arial;
+    font-weight: bolder;
+}
+
+.commandsRun .logs {
+    padding: 25px;
+    font-family: Courier, monospace;
+}
+
+
+
+
+
+/* Dashboard */
+.clinicTable tr td {
+    padding: 3px;
+}
+
+.clinicTable thead tr td {
+    background-color: #e64a07e8;
+    color: #fff;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+.clinicTable .btn {
+    font-size: 11px;
+}
+
+/* Hidding the error overlay */
+
+iframe {
+    display: none;
+}
+
+.datepicker {
+    width: 100%;
+}
+
+
+/* Main menus */
+.nav-item div {
+    /* width: 240px; */
+    font-size: 13px;
+    font-weight: bolder;
+
+}
+
+.collasible-nav-dropdowns,
+collasible-nav-dropdowns {
+    width: 200px;
+}
+
+.appointmentTitles {
+    margin-top: 35px;
+    color: #048e32;
+    font-size: 18px;
+}
+
+.appointmentTitles:first {
+    margin-top: 5px;
+}
