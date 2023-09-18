@@ -48,8 +48,10 @@ function App() {
         } />
 
         <Route path="/account" element={
+          <RequireAuth loginPath="/login">
             <AccountPage />
-          
+          </RequireAuth>
+
         } />
         <Route path="/patientsusers" element={
           <RequireAuth loginPath="/login">
@@ -86,9 +88,6 @@ function App() {
           <RequireAuth loginPath="/login">
             <Serv_group />
           </RequireAuth>} />
-
-
-
 
         {/* Login */}
         <Route path="/login" element={<LoggedInPage />} />

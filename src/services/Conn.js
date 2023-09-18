@@ -13,8 +13,6 @@ export default class Conn {
     static wholePath = {
         name: Conn.server.name + Conn.port.val + Conn.basicPath.val  /*  http://localhost:8089/guru/api  */
     }
-
-
     static callBackWeb = {
         url: (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== '' && localStorage.getItem('token') !== null) ?
             Conn.server.name : 'file:///C:/Apache/webapps/DiamondSmileHtml/public_html/index.html'
@@ -31,6 +29,9 @@ export default class Conn {
     }
 
 
+
+
+    
     // sms address
 
 

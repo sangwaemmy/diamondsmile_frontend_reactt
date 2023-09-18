@@ -16,32 +16,32 @@ class Repository {
         return axios.get(Repository.server + "/account/" + id, { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
     }
     findCategories() {
-        return axios.get(Repository.server + "/")
+        return axios.get(Repository.server + "/", { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
     }
     Login(authRequest) {
 
         return axios.post(Conn.server.name + Conn.port.val + "authenticate", authRequest, { headers: Repository.headers }
-        )
+        ).catch(() => { Commons.RedirectToLogin() })
     }
     findCategoriesCount() {
         return axios.get(Repository.server + "/count/",
             {
                 withCredentials: true
             }
-        )
+        ).catch(() => { Commons.RedirectToLogin() })
     }
     findProfile() {
-        return axios.get(Repository.server + "/profile/")
+        return axios.get(Repository.server + "/profile/", { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
     }
-    findProfileById(id){
-        return axios.get(Repository.server + "/profile/profile/"+id, { headers: Repository.getHeaders })
+    findProfileById(id) {
+        return axios.get(Repository.server + "/profile/profile/" + id, { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
 
     }
     findAccount() {
-        return axios.get(Repository.server + "/account/", { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
+        return axios.get(Repository.server + "/account", { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
     }
     findUserAndProfileByCategory(name) {
-        return axios.get(Repository.server + "/account/byPatient/"+name, { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
+        return axios.get(Repository.server + "/account/byPatient/" + name, { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
     }
     findAccount_category() {
         return axios.get(Repository.server + "/category/", { headers: Repository.getHeaders })
@@ -76,25 +76,25 @@ class Repository {
 
     allNopagination() {
         return axios.get(Repository.server + "/items/search/items/allnopagination", { headers: Repository.getHeaders })
-        // .catch(() => Commons.RedirectToLogin())
+            .catch(() => Commons.RedirectToLogin())
     }
     findAppointment() {
-        return axios.get(Repository.server + "/appointment", { headers: Repository.getHeaders })
+        return axios.get(Repository.server + "/appointment", { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
     }
-  
 
-    findServ_group(){
-        return axios.get(Repository.server + "/serv_group", { headers: Repository.getHeaders })
+
+    findServ_group() {
+        return axios.get(Repository.server + "/serv_group", { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
     }
-    findCustomers(){
-        return axios.get(Repository.server + "/customer", { headers: Repository.getHeaders })
-                                                
+    findCustomers() {
+        return axios.get(Repository.server + "/customer", { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
+
     }
-    findusersByCategory(name){
-        return axios.get(Repository.server + "/account/byPatient/"+name, { headers: Repository.getHeaders })
-                                                
+    findusersByCategory(name) {
+        return axios.get(Repository.server + "/account/byPatient/" + name, { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
+
     }
-   
+
 
 }
 
