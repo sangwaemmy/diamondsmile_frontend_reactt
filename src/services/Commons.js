@@ -33,7 +33,6 @@ class Commons {
         return axios.put(Conn.wholePath.name + "/account/changePassword/" + id, user, { headers: Conn.GetToken })
     }
 
-
     saveItemCategory(itemsCategory) {
         return axios.post(Conn.wholePath.name + "/itemsCategory/", itemsCategory, { headers: Conn.GetToken })
     }
@@ -73,7 +72,7 @@ class Commons {
     }
 
 
-    updateItem(item, id, itemsCategoryId) {
+    Item(item, id, itemsCategoryId) {
         return axios.put(Conn.wholePath.name + "/items/items/" + id + "/" + itemsCategoryId, item, { headers: Conn.GetToken })
     }
     updateItemCategory(itemCategory, itemsCategoryId) {

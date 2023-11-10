@@ -14,6 +14,26 @@ function InputRow(props) {
         </>
     )
 }
+export function NumberInputRow(props) {
+    return(
+        <>
+            <GenIputRow name={props.name} label={props.label}>
+                <input type="number" autoComplete='false' required style={OtherStyles.txt()} value={props.val}
+                    onChange={props.handle} className="form-control" id={props.label} />
+            </GenIputRow>
+        </>
+    )
+}
+export function FileInputRow(props) {
+    return(
+        <>
+            <GenIputRow name={props.name} label={props.label}>
+                <input type="file" autoComplete='false' required style={OtherStyles.txt()} value={props.val}
+                    onChange={props.handle} className="form-control" id={props.label} />
+            </GenIputRow>
+        </>
+    )
+}
 export function PasswordInputRow(props) {
     return (
         <>

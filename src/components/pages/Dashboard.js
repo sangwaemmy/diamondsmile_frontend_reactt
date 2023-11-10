@@ -8,6 +8,9 @@ function Dashboard() {
         document.body.classList.add(
             'removescrol' 
           );
+          
+          document.body.classList.add('bgImage');
+
     })
 
     const overlayText = {
@@ -29,7 +32,7 @@ function Dashboard() {
     const top_2={}
     return (
         <>
-            <img src={DiamondSmile_dashboard} className="card-img-top" alt="..." />
+            {/* <img src={DiamondSmile_dashboard} className="card-img-top" alt="..." /> */}
             <div className='dashboardHome  d-flex align-items-center justify-content-center'
                 style={{ height: '100vh' }}  >
                 <span>

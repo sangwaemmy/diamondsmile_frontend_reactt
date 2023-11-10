@@ -30,6 +30,13 @@ import Changepassword from "./components/pages/Changepassword";
 import Appointment from "./components/pages/Appointment";
 import Serv_group from "./components/pages/Serv_group";
 import PatientUsers from "./components/pages/PatientUsers";
+import PubAppointment from "./components/pages/PubAppointment";
+import Product from "./components/pages/Product";
+import Orders from "./components/pages/Orders";
+import Images from "./components/pages/Images";
+import Sample from "./components/pages/ImageSample";
+import ImageUpload from "./components/pages/ImageSample";
+import ImageSample from "./components/pages/ImageSample";
 
 
 function App() {
@@ -67,7 +74,10 @@ function App() {
           <RequireAuth loginPath="/login">
             <Profile />
           </RequireAuth>} />
-
+          <Route path="/orders" element={
+          <RequireAuth loginPath="/login">
+            <Orders />
+          </RequireAuth>} />
 
         <Route path="/admin" element={
           <RequireAuth loginPath="/login">
@@ -89,10 +99,30 @@ function App() {
             <Serv_group />
           </RequireAuth>} />
 
+          <Route path="/product" element={
+          <RequireAuth loginPath="/login">
+            <Product />
+
+          </RequireAuth>} />
+
+        <Route path="/pubapp" element={
+            <PubAppointment />
+        } />
+
         {/* Login */}
         <Route path="/login" element={<LoggedInPage />} />
-      </Routes>
+        <Route path="/image" element={
+          <RequireAuth loginPath="/login">
+            <Images />
 
+          </RequireAuth>} />
+          <Route path="/sample" element={
+          <RequireAuth loginPath="/login">
+            <ImageSample />
+
+          </RequireAuth>} />
+      </Routes>
+      
 
     </div>
   );

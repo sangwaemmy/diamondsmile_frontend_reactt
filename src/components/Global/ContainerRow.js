@@ -100,7 +100,18 @@ export const FormInnerRightPane = (props) => {
     return (
         <div className={`box col-lg-8 col-md-8 ms-3   formBox p-3 mt-${props.mt}`}  >
             <div className='form-row'>
-                <form onSubmit={props.onSubmitHandler} id="Form">
+                <form onSubmit={props.onSubmitHandler} method='post' id="Form"  >
+                    {props.children}
+                </form>
+            </div>
+        </div>
+    )
+}
+export const FormInnerRightPaneFile = (props) => {
+    return (
+        <div className={`box col-lg-8 col-md-8 ms-3  formBox p-3 mt-${props.mt}`}  >
+            <div className='form-row'>
+                <form onSubmit={props.onSubmitHandler} method='post' id="Form"  encType="multipart/form-data">
                     {props.children}
                 </form>
             </div>

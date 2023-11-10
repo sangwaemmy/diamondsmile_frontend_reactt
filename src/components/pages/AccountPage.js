@@ -235,7 +235,7 @@ function AccountPage() {
 
                         <SaveUpdateBtns clearBtn={clearBtn} clearHandle={clearHandle} saveOrUpdate={FormTools.BtnTxt(clearBtn)} />
                     </FormInnerRightPane>
-                    <FormSidePane />
+                    {/* <FormSidePane /> */}
                 </ContainerRowBtwn>
             </AnimateHeight>
             <ContainerRow mt='3'>

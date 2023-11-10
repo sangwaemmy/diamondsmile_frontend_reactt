@@ -177,7 +177,12 @@ function NavbarBar() {
                             </Nav.Link>
 
                         }
-
+            <Nav.Link as={Link} to="/pubapp">
+                                    <span style={navLinks} >
+                                        <Icon style={OtherStyles.iconStyles()} size={22} icon={ic_logout} />
+                                        Appointment
+                                    </span>
+                                </Nav.Link>
                         {userType !== null && <>
                             <NavDropdown color='#fff' title={
                                 <span style={navLinks}  > <Icon style={iconStyle} size={16} icon={compass} />  Appointment </span>}
@@ -189,6 +194,7 @@ function NavbarBar() {
                                         Service Groups
                                     </span>
                                 </Nav.Link>
+                                
                                 <Nav.Link as={Link} to="/appointment">
                                     <span style={{ color: '#000', fontWeight: 'normal' }}>
                                         <Icon style={OtherStyles.iconStyles()} size={22} icon={ic_logout} />
@@ -201,9 +207,23 @@ function NavbarBar() {
                                         Upcoming appointments
                                     </span>
                                 </Nav.Link> */}
+                                <Nav.Link as={Link} to="/product">
+                                    <span style={{ color: '#000', fontWeight: 'normal' }}>
+                                        <Icon style={OtherStyles.iconStyles()} size={22} icon={ic_logout} />
+                                        Product
+                                    </span>
+                                </Nav.Link>
+                                <Nav.Link as={Link} to="/orders">
+                                    <span style={{ color: '#000', fontWeight: 'normal' }}>
+                                        <Icon style={OtherStyles.iconStyles()} size={22} icon={ic_logout} />
+                                        Orders
+                                    </span>
+                                </Nav.Link>
+                                   
                             </NavDropdown>
-                        </>
 
+
+                            </>
                         }
 
 

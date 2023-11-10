@@ -738,3 +738,7 @@ collasible-nav-dropdowns {
 .appointmentTitles:first {
     margin-top: 5px;
 }
+
+.bgImage{
+    background-image: url('../imgz/DiamondSmile_dashboard.JPG');
+}

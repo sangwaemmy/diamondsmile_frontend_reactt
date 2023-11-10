@@ -6,7 +6,7 @@ import Commons from './Commons';
 class Repository {
     static page = (Repository.page < 1 || Repository.page == undefined) ? 1 : Repository.page;
     static size = (Repository.size < 1) ? 50 : Repository.size;
-    static server = Conn.wholePath.name;
+    static server = Conn.wholePath.name; //http://localhost:8081/appointment/api/account
     // static url = "http://" + Repository.server + ":8089/guru/api"
 
     static headers = Conn.LoginToken
@@ -23,6 +23,10 @@ class Repository {
         return axios.post(Conn.server.name + Conn.port.val + "authenticate", authRequest, { headers: Repository.headers }
         ).catch(() => { Commons.RedirectToLogin() })
     }
+
+
+   
+
     findCategoriesCount() {
         return axios.get(Repository.server + "/count/",
             {
@@ -30,8 +34,14 @@ class Repository {
             }
         ).catch(() => { Commons.RedirectToLogin() })
     }
+
+    findDatacount() {
+        return axios.get(Repository.server+'/appointment/datacount'
+            
+        ).catch(() => { Commons.RedirectToLogin() })
+    }
     findProfile() {
-        return axios.get(Repository.server + "/profile/", { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
+        return axios.get(Repository.server + "/profile/").catch(() => { Commons.RedirectToLogin() })
     }
     findProfileById(id) {
         return axios.get(Repository.server + "/profile/profile/" + id, { headers: Repository.getHeaders }).catch(() => { Commons.RedirectToLogin() })
@@ -78,7 +88,7 @@ class Repository {
         return axios.get(Repository.server + "/items/search/items/allnopagination", { headers: Repository.getHeaders })
             .catch(() => Commons.RedirectToLogin())
     }
-    findAppointment() {
+    findAppointment() {   //localhost:8081/appointment/api/
         return axios.get(Repository.server + "/appointment", { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
     }
 
@@ -93,6 +103,18 @@ class Repository {
     findusersByCategory(name) {
         return axios.get(Repository.server + "/account/byPatient/" + name, { headers: Repository.getHeaders }).catch(() => Commons.RedirectToLogin())
 
+    }
+
+    saveImages(formData){
+       return axios.post(Repository.server +"/images/img",formData,{ headers: Repository.getHeaders })
+    }
+    findImages(){
+
+        var GetToken = {
+            'Content-Type': 'multipart/formdata',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      return  axios.get(Repository.server +"/images/imgDisplay",{ headers: GetToken })
     }
 
 

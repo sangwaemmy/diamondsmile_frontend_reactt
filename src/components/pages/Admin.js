@@ -5,13 +5,19 @@ import p2 from '../imgz/products/p2.PNG'
 import p3 from '../imgz/products/p3.PNG'
 import p4 from '../imgz/products/p4.PNG'
 import Commons from '../../services/Commons'
+import axios from 'axios'
+import Conn from '../../services/Conn'
+import Repository from '../../services/Repository'
+import PrintCompanyInfo from '../Global/PrintCompanyInfo'
+import TableHead from '../Global/TableHead'
+import { TableOpen } from '../Global/ListTable'
 function Admin() {
 
     useEffect(() => {
         if (localStorage.getItem('token') === '' || localStorage.getItem('token') == undefined) {
             Commons.RedirectToLogin()
         } else {
-            console.log('The login tolen is: ' + localStorage.getItem('token'))
+            console.log('The login token is: ' + localStorage.getItem('token'))
         }
     }, [])
     const [mark, setMark] = useState(1)
@@ -62,6 +68,32 @@ function Admin() {
         setMark(n)
         changeTitle(n)
     }
+    const [datas,setDatas] = useState([])
+   
+    for(let one in datas){
+        let date = one.date_time_come
+        console.log(date);
+    }
+    const [appointments,setAppointments] = useState([])
+    useEffect(() => {
+    // const getAllAppointments = () => {
+        Repository.findAppointment().then((res) => {
+          setAppointments(res.data);
+          setDataLoad(true)
+        });
+
+
+
+
+
+
+        
+
+
+    //   }
+},[])
+    
+   
     return (
         <div className='container' style={{ color: '#000' }}>
             <h3 className='fw-bold my-1'>Welcome To DiamondSmile Dental clinic</h3>
@@ -71,6 +103,9 @@ function Admin() {
                         <h5 className="card-title fw-bold" style={{ color: '#e64a07e8' }}>Today Appointments </h5>
                         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p className="card-text">2 beforenoon / 5 afternoon</p>
+                        <p>
+                            
+                        </p>
                         <a href="#" className="card-link">Card link</a>
                         <a href="#" className="card-link">Another link</a>
                     </div>
@@ -98,6 +133,7 @@ function Admin() {
 
 
                 {mark == 1 &&
+                <>
                     <table class="table  clinicTable table-striped table-bordered" >
                         <thead style={theadStyle}>
                             <tr >
@@ -110,6 +146,26 @@ function Admin() {
                             <tr>  <td>  2</td>  <td>  Patrick Mugabo</td> <td> +250 784568684</td><td>2023-03-08 10:00:00</td> <td>  <a className='btn p-1 btn-success' href='#'>Confirm</a></td> </tr>
                         </tbody>
                     </table>
+                    <div className="dataTableBox">
+                        <h3 className="appointmentTitles">Patients Coming today (All)   </h3>
+                        <PrintCompanyInfo />
+                        <TableOpen>
+                        <TableHead>
+                            <AppintmentHead />
+                        </TableHead>
+                        <tbody>
+                            {appointments.map((appointment) => {
+                            return (
+                                <tr key={appointment.id}>
+                                <AppointmentTableRows appointment={appointment} />
+                                {/* <ListOptioncol getEntityById={() => getAppointmentById(appointment.id)} delEntityById={() => delAppointmentById(appointment.id)} /> */}
+
+                                </tr>
+                            )
+                            })}</tbody>
+                        </TableOpen>
+                    </div>
+                </>
                 }
 
                 {mark == 2 &&
@@ -149,3 +205,31 @@ function Admin() {
 }
 
 export default Admin
+
+export const AppintmentHead = (props) => {
+    return <>
+
+    <td>Recorded Date</td>
+    <td>Treatment Date</td>
+    <td>Patient</td>
+    <td>Done By</td>
+    <td>status</td>
+    <td>service group</td>
+    <td className='delButton d-none'>Option</td>
+    {/* more button */}
+    {props.mbtn === 'yes' && <td className=' '>Action</td>}
+
+  </>
+}
+
+export const AppointmentTableRows = ({ appointment }) => {
+    return <>
+      <td>{appointment.date_time_done}   </td>
+      <td>{appointment.date_time_come}   </td>
+      <td>{appointment.mdl_customer.names} 📞 {appointment.mdl_customer.telephone} </td>
+      <td>{appointment.mdl_account.mdl_profile.name} {appointment.mdl_account.mdl_profile.surname}   </td>
+      <td>{appointment.status}   </td>
+      <td>{appointment.mdl_serv_group.group_name}   </td>
+
+    </>
+  }

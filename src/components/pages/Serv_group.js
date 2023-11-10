@@ -148,7 +148,7 @@ function Serv_group() {
             <InputRow name='Group Name ' val={group_name} handle={(e) => setGroup_name (e.target.value)} label='lblGroup Name ' />
             <SaveUpdateBtns clearBtn={clearBtn} clearHandle={clearHandle} saveOrUpdate={FormTools.BtnTxt(clearBtn)} />
           </FormInnerRightPane>
-          <FormSidePane />
+          {/* <FormSidePane /> */}
         </ContainerRowBtwn>
       </AnimateHeight>
       <ContainerRow mt='3'>

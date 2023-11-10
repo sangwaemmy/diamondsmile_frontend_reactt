@@ -24,7 +24,7 @@ import CommonLook from './CommonLook'
 function ListToolBar(props) {
     return (
         <>
-            <div className='col-12 '><h3 className='boldTitle'> {props.listTitle}  </h3></div>
+            <div className='col-12 '><h2 className='boldTitle h4 weight-4 text-capitalize' style={{fontFamily:"timesNewRoman"}}> {props.listTitle}  </h2></div>
             <div className='col-12'>
                 <div className='row'>
                     <div className='col-6'>
@@ -33,7 +33,7 @@ function ListToolBar(props) {
                             aria-expanded={props.height !== 0} aria-controls="animForm" onClick={props.changeFormHeightClick}
                             style={{ marginRight: "15px", backgroundColor: CommonLook.Commonskin.color, fontSize: "12px", color: '#fff', fontWeight: "bold" }}>
                             <Icon size={11} style={{ marginRight: "8px", color: '#fff' }} icon={add} />
-                            {(localStorage.getItem('catname') !== 'admin') ? 'Fiil details' : 'Add'}
+                            {(localStorage.getItem('catname') !== 'admin') ? 'Fiil ' : 'Add'}
                             {props.entity}
                         </button>
 
@@ -41,7 +41,7 @@ function ListToolBar(props) {
                             <Icon style={{ marginRight: "8px", color: '#fff' }} icon={printer} />
                             Print
                         </button>
-                        <button className='btn btn-outline-success ms-1'
+                         <button className='btn btn-outline-success ms-1'
                             aria-expanded={props.searchHeight !== 0} aria-controls="animSearchBox" onClick={props.changeSearchheight}>
                             <Icon style={{ color: 'black' }} icon={search} />
                         </button>

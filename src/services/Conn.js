@@ -1,8 +1,7 @@
 
 export default class Conn {
     static server = {
-        name: 'http://appointment.thediamondsmile.rw:'
-        // name: 'http://localhost:'
+                name: 'http://localhost:'
     };
     static port = {
         val: '8081/'
@@ -10,8 +9,11 @@ export default class Conn {
     static basicPath = {
         val: 'appointment/api'
     }
+    static accountAll = {
+        val: Conn.server.name + Conn.port.val + Conn.basicPath.val + "/account"
+    }
     static wholePath = {
-        name: Conn.server.name + Conn.port.val + Conn.basicPath.val  /*  http://localhost:8089/guru/api  */
+        name: Conn.server.name + Conn.port.val + Conn.basicPath.val  /*  http://localhost:8081/appointment/api  */
     }
     static callBackWeb = {
         url: (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== '' && localStorage.getItem('token') !== null) ?
@@ -28,12 +30,7 @@ export default class Conn {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 
-
-
-
-    
     // sms address
-
 
     static sms_server = {
         // name: 'http://appointment.thediamondsmile.rw:'
@@ -49,5 +46,16 @@ export default class Conn {
         name: Conn.sms_server.name + Conn.sms_port.val + Conn.sms_basicPath.val  /* http://megisha.com:8095/guru/smssender/  */
     }
     
-
+    static product = {
+        name : Conn.wholePath.name + "/product/"
+    }
+    static orders = {
+        name: Conn.wholePath.name + "/orders"
+    }
+    static account = {
+        name: Conn.wholePath.name + '/account'
+    }
+    static image = {
+        name: Conn.wholePath.name + "/images"
+    }
 }
