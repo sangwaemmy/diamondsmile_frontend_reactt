@@ -34,7 +34,7 @@ export default class Conn {
 
     static sms_server = {
         // name: 'http://appointment.thediamondsmile.rw:'
-        name: 'http://megisha.com:'
+        name: 'https://megisha.com:'
     };
     static sms_port = {
         val: '8095/'
@@ -43,7 +43,7 @@ export default class Conn {
         val: 'guru/smssender'
     }
     static sms_wholePath = {
-        name: Conn.sms_server.name + Conn.sms_port.val + Conn.sms_basicPath.val  /* http://megisha.com:8095/guru/smssender/  */
+        name: Conn.sms_server.name + Conn.sms_port.val + Conn.sms_basicPath.val  /* http://megisha.com:8095/guru/smssender  */
     }
     
     static product = {
@@ -57,5 +57,8 @@ export default class Conn {
     }
     static image = {
         name: Conn.wholePath.name + "/images"
+    }
+    static nonAuthenticated = {
+        name: "http://localhost:8081/pub/appointment"
     }
 }

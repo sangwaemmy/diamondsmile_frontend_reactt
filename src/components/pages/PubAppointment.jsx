@@ -34,6 +34,8 @@ import Delete from '../../services/Delete'
 import TimePicker from 'react-time-picker'
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
+import PubRequests from '../../services/PubRequests'
+import Conn from '../../services/Conn'
 
 function pubAppointment() {
 
@@ -86,29 +88,25 @@ function pubAppointment() {
         resetAfterSave()
       })
     } else {
-      Commons.saveAppointment(mdl_appointment, service_grp_id).then((res) => {
+      var mdl_messageValues={
+        message:'test', destination:'0790390472', source:'diamondsmile'
+      }
+      PubRequests.saveAppointment(mdl_appointment, service_grp_id,mdl_messageValues).then((res) => {
         console.log(res.data)
+        alert("successfully done")
         if (res.data != null) {
-          resetAfterSave()
-          getTodayAppointments()
-          findAppntByRecordedDate()
-          getTodayPendingAppointments()
-          getTodayConfirmedAppointments()
+          // resetAfterSave()
         }
-        var mdl_messageValues = {
-          message: 'Thank you for booking',
-          destination: '0784113888',
-          source: 'DSCLINIC'
-        }
+        // var mdl_messageValues = {
+        //   message: 'Thank you for booking',
+        //   destination: '0784113888',
+        //   source: 'DSCLINIC'
+        // }
 
-        Commons.sendSms(mdl_messageValues).then((res) => {
-          alert('An sms has been sent to you!')
+        // Commons.sendSms(mdl_messageValues).then((res) => {
+        //   alert('An sms has been sent to you!')
 
-        })
-
-
-
-
+        // })
       }).catch((error) => {
         console.log('-----------')
       })
@@ -117,106 +115,38 @@ function pubAppointment() {
   /*#endregion Listing data*/
 
   /*#region ------------All Records, Deleting and By Id------------------------*/
-  const getAllAppointments = () => {
-    Repository.findAppointment().then((res) => {
-      setAppointments(res.data);
-      setDataLoad(true)
-    });
-  }
   const getAllServ_groups = () => {
-    Repository.findServ_group().then((res) => {
-      setServ_groups(res.data);
+    PubRequests.serviceGroup().then((res) =>{
+      setServ_groups(res.data)
       setDataLoad(true)
-    });
-  }
-  const getTodayAppointments = () => {
-    var SearchByDateOnly = {
-      startDate: startDate,
-      endDate: endDate
-    }
-    Commons.getTodayAppointments(SearchByDateOnly).then((res) => {
-      setAppointments(res.data);
-      setDataLoad(true)
-    });
-  }
-  const getTodayPendingAppointments = () => {
-    var SearchByDateOnly = {
-      startDate: startDate,
-      endDate: endDate
-    }
-    Commons.findAppointByStatus(SearchByDateOnly, 'pending').then((res) => {
-      setPendingAppointments(res.data);
-      setDataLoad(true)
-    });
-  }
-  const getTodayConfirmedAppointments = () => {
-    var SearchByDateOnly = {
-      startDate: startDate,
-      endDate: endDate
-    }
-    Commons.findAppointByStatus(SearchByDateOnly, 'confirmed').then((res) => {
-      setConfirmedAppointments(res.data);
-      setDataLoad(true)
-    });
-  }
+    })
 
+  }
+  
   useEffect(() => {
-    // getAllAppointments()
-    // getTodayAppointments()
-    // findAppntByRecordedDate()
-    // getTodayPendingAppointments()
-    // getTodayConfirmedAppointments()
     setClearBtn(false)
-    // getAllServ_groups()
-    // getAllDoctors()
-    // getACustomers()
-    setUser_id(localStorage.getItem('userid'))
+    getAllServ_groups()
+    getAllDoctors()
+    getACustomers()
+    // setUser_id(localStorage.getItem('userid'))
     console.log('userid: ' + user_id)
 
 
     document.body.classList.remove('bgImage');
+    
       
   }, []);
 
 
-  const findAppntByRecordedDate = () => {
-    var SearchByDateOnly = {
-      startDate: startDate,
-      endDate: endDate
-    }
-    Commons.findAppointmentByRecordedDate(SearchByDateOnly).then(res => {
-      setAppointmentsByrecordedDate(res.data)
-    })
-  }
-
-  const getAppointmentById = (id) => {
-    Repository.findAppointmentById(id).then((res) => {
-      setId(res.data.id)
-      setDate_time_done(res.data.id)
-      setDate_time_come(res.data.id)
-      setCustomer(res.data.id)
-      setUser_id(res.data.id)
-      setStatus(res.data.id)
-      setService_grp_id(res.data.id)
-      setClearBtn(true)
-      showheight('auto')
-    })
-  }
-  const delAppointmentById = (id) => {
-    Utils.Submit(() => {
-      Delete.deleteAppointmentById(id, () => { getAllAppointments() })
-    }, () => { })
-  }
-
-  const getAllDoctors = () => {
-    Repository.findUserAndProfileByCategory('doctor').then((res) => {
-      setDoctors(res.data);
+  const getACustomers = () => {
+    PubRequests.customers().then((res) => {
+      setCustomers(res.data);
       setDataLoad(true)
     });
   }
-  const getACustomers = () => {
-    Repository.findCustomers().then((res) => {
-      setCustomers(res.data);
+  const getAllDoctors = () => {
+    PubRequests.doctors('doctor').then((res) => {
+      setDoctors(res.data);
       setDataLoad(true)
     });
   }

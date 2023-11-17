@@ -147,11 +147,11 @@ function NavbarBar() {
                             </Nav.Link>
                         </>
 
-                            : <><Nav.Link style={navLinks} as={Link} to="http://thediamondsmile.rw/">
+                            : <><Nav.Link style={navLinks} as={Link} to="/">
                                 <Icon style={iconStyle} size={18} icon={struc} />
                                 Home
-                            </Nav.Link></>
-                        }
+                            </Nav.Link></>}
+            
                         {userType == 'admin' ?
                             <NavDropdown color='#fff' title={<span style={navLinks}  > <Icon style={iconStyle} size={16} icon={compass} />  Users </span>}
                                 id="collasible-nav-dropdowns">

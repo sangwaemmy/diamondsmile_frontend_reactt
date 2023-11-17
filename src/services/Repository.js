@@ -9,6 +9,9 @@ class Repository {
     static server = Conn.wholePath.name; //http://localhost:8081/appointment/api/account
     // static url = "http://" + Repository.server + ":8089/guru/api"
 
+    
+
+
     static headers = Conn.LoginToken
     static getHeaders = Conn.GetToken
 
@@ -117,6 +120,12 @@ class Repository {
       return  axios.get(Repository.server +"/images/imgDisplay",{ headers: GetToken })
     }
 
+
+
+    
+      
+
+    
 
 }
 
