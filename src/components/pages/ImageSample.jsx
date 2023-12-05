@@ -130,12 +130,9 @@ const ImageSample = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    const length = image.length
-
-    for (let index = 0; index < length; index++) {
       var formData = new FormData()
-      console.log(image[index])
-      formData.append('file',image[index])
+      console.log(image)
+      formData.append('file',image)
       formData.append("name",name)
       formData.append("description",description)
       axios.post("http://localhost:8081/appointment/api/check/",formData,{headers: {
@@ -145,7 +142,6 @@ const ImageSample = () => {
         alert(res.data)
       })
     }
-  }
 
   return(<>
 
@@ -153,7 +149,7 @@ const ImageSample = () => {
     <form encType="multipart/form-data" onSubmit={handleSubmit}>
       <input type="text" value={name} onChange={(e) => {setName(e.target.value)}} /><br />
       <textarea id="" cols="50" rows="2" value={description} onChange={(e) => {setDescription(e.target.value)}} /><br />
-      <input type="file" accept="image/*" multiple onChange={imageHandler} /><br />
+      <input type="file" accept="image/*" onChange={imageHandler} /><br />
       <button>send</button>
     </form>
   </>)

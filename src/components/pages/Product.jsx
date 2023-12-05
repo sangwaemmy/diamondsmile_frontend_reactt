@@ -25,8 +25,7 @@ const Product = () => {
     //inputs
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [imageToUpload, setImageToUpload] = useState([])
-    const [alliimage, setAllimages] = useState({})
+    const [imageToUpload, setImageToUpload] = useState('')
     //outputs
     const [product, setProduct] = useState([])
     const [autoRefresh, setAutoRefresh] = useState(true)
@@ -38,12 +37,10 @@ const Product = () => {
         setHeight('auto')
     }
 
-    // const handleFileChange = (e) =>{
-    //     setImages([...images])
-    // }
     const onSubmitHandler = (e) => {
         e.preventDefault()
         const productInserting = { "name": name, "description": description }
+        console.log(name+ description + imageToUpload)
         const formData = new FormData()
         if (id) {
 
@@ -51,28 +48,18 @@ const Product = () => {
                 alert(res.data)
                 setId(null)
                 setAutoRefresh(!autoRefresh)
-                setHeight(0)
+                // setHeight(0)
 
             })
 
         } else {
             if (imageToUpload) {
-
-                // [...imageToUpload].forEach((file, i) => {
-                //     console.log(i)
-                //     formData.append(`file-${i}`, file, file.name)
-                // })
-                
-                
-                setAllimages('file', imageToUpload)
-
-                formData.append("file",alliimage)
                 console.log(formData)
-                // formData.append("file",images)
+                formData.append("file",imageToUpload)
                 formData.append("name", name)
                 formData.append("description", description)
-
-                console.log('All files: ' + images.length);
+                
+                console.log(formData)
 
                 axios.post(imageLink, formData, {
                     headers: {
@@ -81,8 +68,8 @@ const Product = () => {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     },
                 }).then((res) => {
-                    alert("product and image successfully inserted")
-                    setClearBtn(true)
+                    alert(res.data)
+                    // setClearBtn(true)
                     setShowLoader(false)
                     setShowAlert(true)
                     setId(null)
@@ -117,8 +104,9 @@ const Product = () => {
             alert(result.data)
             setAutoRefresh(!autoRefresh)
         })
-
     }
+    
+// multiple accept="image/*"
     return <>
         <div className="form-div">
             <AnimateHeight duration={300} animationOpacity={true} height={height}>
@@ -140,7 +128,7 @@ const Product = () => {
                         <div className="row mt-2">
                             <label htmlFor="description" className="col-sm-3 p">Image:</label>
                             <div className="col-sm-9">
-                                <input type="file" name="file" className="form-control" multiple accept="image/*" onChange={(e) => setImageToUpload(e.target.files)} />
+                                <input type="file" name="file" className="form-control"  onChange={(e) => {setImageToUpload(e.target.files[0]);console.log(e.target.files[0])}} />
                             </div>
                         </div>
                         <div className="row">

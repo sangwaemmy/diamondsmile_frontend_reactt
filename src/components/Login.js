@@ -82,7 +82,7 @@ function Login() {
                         <div class="alert alert-danger text-center" role="alert">
                             Login Failed {backedNotConnected && " - The Logic not conntected!"}
                         </div>}
-                    <form onSubmit={onSubmitHandler} id="Form">
+                    <form onSubmit={(e) => onSubmitHandler(e)} id="Form">
                         <div className="form-row   formPane p-3 mt-3" style={{ border: "2px solid #b016be" }}>
                             <h2 style={{ fontWeight: "bolder" }}>  Login </h2>
                             <div class="form-group row m-3">

@@ -54,14 +54,13 @@ const Orders = () => {
 
         if (id) {
 
-            axios.put(Conn.orders.name+ `/${id}/${account_id}/${product_id}`,mdl_orders,{headers:Conn.GetToken}).then((res) => {
+            axios.put(Conn.orders.name + `/${id}/${account_id}/${product_id}`,mdl_orders,{headers:Conn.GetToken}).then((res) => {
                 alert('order updated')
                 setId(id)
                 setHeight('auto')
                 setAutoRefresh(!autoRefresh)
 
             })
-
         } else {
 
             // "appoint/api/orders/", {}
