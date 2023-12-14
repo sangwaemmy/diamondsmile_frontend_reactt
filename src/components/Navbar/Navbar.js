@@ -219,6 +219,12 @@ function NavbarBar() {
                                         Orders
                                     </span>
                                 </Nav.Link>
+                                <Nav.Link as={Link} to="/form1">
+                                    <span style={{ color: '#000', fontWeight: 'normal' }}>
+                                        <Icon style={OtherStyles.iconStyles()} size={22} icon={ic_logout} />
+                                        form1
+                                    </span>
+                                </Nav.Link>
                                    
                             </NavDropdown>
 

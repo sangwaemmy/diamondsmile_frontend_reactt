@@ -37,12 +37,18 @@ import Images from "./components/pages/Images";
 import Sample from "./components/pages/ImageSample";
 import ImageUpload from "./components/pages/ImageSample";
 import ImageSample from "./components/pages/ImageSample";
+import Form1 from "./redux-table/Form1";
+import { Provider } from 'react-redux';
+import { store } from './redux-table/Store';
+import { Form2 } from "./redux-table/Form2";
+import { Result } from "./redux-table/Result";
+import Pagination from "./redux-table/TablePages";
 
 
 function App() {
   return (
     <div className="App">
-
+      <Provider store={store}>
       <Navbar />
       <Routes>
         <Route path="/" element={
@@ -104,7 +110,23 @@ function App() {
             <Product />
 
           </RequireAuth>} />
-
+          
+          <Route path="/form1" element={
+          <RequireAuth loginPath="/login">
+            <Form1 />
+          </RequireAuth>} />
+          <Route path="/form2" element={
+          <RequireAuth loginPath="/login">
+            <Form2 />
+          </RequireAuth>} />
+          <Route path="/view" element={
+          <RequireAuth loginPath="/login">
+            <Result />
+          </RequireAuth>} />
+          <Route path="/table" element={
+          <RequireAuth loginPath="/login">
+            <Pagination />
+          </RequireAuth>} />
         <Route path="/pubapp" element={
             <PubAppointment />
         } />
@@ -124,6 +146,8 @@ function App() {
       </Routes>
       
 
+    
+      </Provider>
     </div>
   );
 }
