@@ -23,9 +23,9 @@ const Product = () => {
     const [id, setId] = useState(null)
     const [images, setImages] = useState([])
     //inputs
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [imageToUpload, setImageToUpload] = useState('')
+    var imagesIn = []
+    const [name,setName] = useState("")
+    const [desc,setDesc] = useState("")
     //outputs
     const [product, setProduct] = useState([])
     const [autoRefresh, setAutoRefresh] = useState(true)
@@ -36,12 +36,21 @@ const Product = () => {
         setId(id)
         setHeight('auto')
     }
-
+    const handleChangle = (e) => {
+        imagesIn.push(e.target.files)
+    }
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        const productInserting = { "name": name, "description": description }
-        console.log(name+ description + imageToUpload)
-        const formData = new FormData()
+
+        var formData = new FormData();
+        formData.append('name',name)
+        formData.append("description",desc)
+        imagesIn.forEach((imageFiles) => {
+            Array.from(imageFiles).forEach((file) => {
+                formData.append("file", file);
+            });
+        });
+
         if (id) {
 
             axios.put(Conn.product.name + "update/" + id, productInserting, { headers: Conn.GetToken }).then((res) => {
@@ -53,33 +62,17 @@ const Product = () => {
             })
 
         } else {
-            if (imageToUpload) {
-                console.log(formData)
-                formData.append("file",imageToUpload)
-                formData.append("name", name)
-                formData.append("description", description)
+            
+            axios.post("http://localhost:8081/appointment/api/check/files", formData,{headers: {
+                ...Conn.GetToken,
+                "Content-Type":"multipart/form-data"
+            }}).then((res) => {
+                alert("done");
+                setAutoRefresh(!autoRefresh)
+                formData= new FormData()
+                images= []
                 
-                console.log(formData)
-
-                axios.post(imageLink, formData, {
-                    headers: {
-                        ...Conn.GetToken,
-                        "Content-Type": "multipart/form-data", // Set the content type for file upload
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
-                    },
-                }).then((res) => {
-                    alert(res.data)
-                    // setClearBtn(true)
-                    setShowLoader(false)
-                    setShowAlert(true)
-                    setId(null)
-                    setName('')
-                    setDescription('')
-                    setAutoRefresh(!autoRefresh)
-                    setHeight(0)
-                })
-
-            }
+            });
 
         }
     }
@@ -122,13 +115,13 @@ const Product = () => {
                         <div className="row">
                             <label htmlFor="description" className="col-sm-3 p">description:</label>
                             <div className="col-sm-9">
-                                <textarea type="text" id="description" value={description} onChange={(e) => { setDescription(e.target.value) }} className="form-control" />
+                                <textarea type="text" id="description" value={desc} onChange={(e) => { setDesc(e.target.value) }} className="form-control" />
                             </div>
                         </div>
                         <div className="row mt-2">
                             <label htmlFor="description" className="col-sm-3 p">Image:</label>
                             <div className="col-sm-9">
-                                <input type="file" name="file" className="form-control"  onChange={(e) => {setImageToUpload(e.target.files[0]);console.log(e.target.files[0])}} />
+                                <input type="file" name="file" className="form-control" multiple  onChange={(e) => {handleChangle(e)}} />
                             </div>
                         </div>
                         <div className="row">
@@ -140,7 +133,7 @@ const Product = () => {
             <div className="body">
                 <div className="container">
                     <BootResponsiveMain col="col-sm-12" >
-                        <ListToolBar listTitle='Products list' height={height} entity='Product' changeFormHeightClick={() => setHeight(height == 0 ? 'auto' : 0)} />
+                        <ListToolBar listTitle='Products list' height={height} entity='Product' changeFormHeightClick={() => setHeight(height == 0 ? 'auto' : 0)}/>
                     </BootResponsiveMain>
                     <BootResponsiveMain col="col-sm-12">
                         <TableOpen>

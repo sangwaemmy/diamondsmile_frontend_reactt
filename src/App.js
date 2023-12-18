@@ -43,6 +43,7 @@ import { store } from './redux-table/Store';
 import { Form2 } from "./redux-table/Form2";
 import { Result } from "./redux-table/Result";
 import Pagination from "./redux-table/TablePages";
+import { Check } from "./components/pages/Immage";
 
 
 function App() {
@@ -126,6 +127,10 @@ function App() {
           <Route path="/table" element={
           <RequireAuth loginPath="/login">
             <Pagination />
+          </RequireAuth>} />
+          <Route path="/check" element={
+          <RequireAuth loginPath="/login">
+            <Check />
           </RequireAuth>} />
         <Route path="/pubapp" element={
             <PubAppointment />
