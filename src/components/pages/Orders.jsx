@@ -163,7 +163,7 @@ const Orders = () => {
                             </TableHead>
                             <tbody>
                                 {
-                                    orderDatabase.map((orderDb) => (
+                                    orderDatabase && orderDatabase.map((orderDb) => (
                                         <tr key={orderDb.id}>
                                             <td>{orderDb.user}</td>
                                             <td>{ orderDb.mdl_product!=null? orderDb.mdl_product.name :''}</td>
