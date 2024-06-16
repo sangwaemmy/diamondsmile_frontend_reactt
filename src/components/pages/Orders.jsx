@@ -202,7 +202,8 @@ const Orders = () => {
 
     const updateOrder = () => { // this is to send data to backend
         var id = chosenorderId
-
+        console.log("****************")
+        console.log(Mdl_orders)
         Commons.updateOrder(id, user, product, Mdl_orders).then(res => {
             setShow(false)
             setAutoRefresh(!autoRefresh)

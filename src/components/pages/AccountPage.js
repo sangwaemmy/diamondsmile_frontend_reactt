@@ -68,6 +68,7 @@ function AccountPage() {
     /*#region ---------- SAVING DATA TO DB--------------------------------------*/
     const onSubmitHandler = (e) => {
         e.preventDefault()
+      
         setShowLoader(true)
 
         var usersDTO = {  id: id,  name: name, surname: surname, gender, gender, account_category_id: catId, username: username, password: password}
@@ -252,6 +253,7 @@ function AccountPage() {
                                     <td>Surname</td>
                                     <td>username</td>
                                     <td>account_category</td>
+                                    <td>Telephone</td>
                                     {userType == 'admin' && <td className='delButton'>Option</td>}
                                 </TableHead>
                                 <tbody>
@@ -264,6 +266,7 @@ function AccountPage() {
 
                                             <td>{account.username}   </td>
                                             <td>{account.catname}   </td>
+                                            <td>{account.telephone}   </td>
                                             {userType == 'admin' &&
                                                 <ListOptioncol getEntityById={() => getAccountById(account.id)} delEntityById={() => delAccountById(account.id)} />
 
@@ -283,6 +286,8 @@ function AccountPage() {
 
                                     <td>username</td>
                                     <td>account_category</td>
+                                    <td>Telephone</td>
+
                                     {userType == 'admin' && <td className='delButton'>Option</td>}
                                 </TableHead>
                                 <tbody>
@@ -295,6 +300,7 @@ function AccountPage() {
 
                                             <td>{account.username}   </td>
                                             <td>{account.catname}   </td>
+                                            <td>{account.telephone}   </td>
                                             {userType == 'admin' &&
                                                 <ListOptioncol getEntityById={() => getAccountById(account.id)} delEntityById={() => delAccountById(account.id)} />
 
@@ -314,6 +320,7 @@ function AccountPage() {
 
                                     <td>username</td>
                                     <td>account_category</td>
+                                    <td>Telephone</td>
                                     {userType == 'admin' && <td className='delButton'>Option</td>}
                                 </TableHead>
                                 <tbody>
@@ -326,6 +333,7 @@ function AccountPage() {
 
                                             <td>{account.username}   </td>
                                             <td>{account.catname}   </td>
+                                            <td>{account.telephone}   </td>
                                             {userType == 'admin' &&
                                                 <ListOptioncol getEntityById={() => getAccountById(account.id)} delEntityById={() => delAccountById(account.id)} />
 

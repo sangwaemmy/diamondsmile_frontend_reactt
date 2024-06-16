@@ -53,8 +53,8 @@ class Commons {
         return axios.post(Conn.wholePath.name + "/serv_group/", mdl_serv_group, { headers: Conn.GetToken })
 
     }
-    saveAppointment(mdl_appointment, service_groupd_id) {
-        return axios.post(Conn.wholePath.name + "/appointment/add/" + service_groupd_id, mdl_appointment, { headers: Conn.GetToken })
+    saveAppointment(appointmentRequestDto, service_grp_id) {
+        return axios.post(Conn.wholePath.name + "/appointment/add/" + service_grp_id, appointmentRequestDto, { headers: Conn.GetToken })
     }
 
     // Send SMS
